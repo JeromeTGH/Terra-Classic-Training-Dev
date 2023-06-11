@@ -4,7 +4,37 @@ import { LCDClient, Coins } from '@terra-money/terra.js';
 
 const Finder = () => {
 
+    // Adresse du compte visé
     const addresse = 'terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v';
+
+    // Tableau de correspondance des valeurs
+    const tblCorrespondanceValeurs = {
+        "uluna": "LUNC",
+        "uusd": "USTC",
+        "uaud": "AUTC",
+        "ucad": "CATC",
+        "uchf": "CHTC",
+        "ucny": "CNTC",
+        "udkk": "DKTC",
+        "ueur": "EUTC",
+        "ugbp": "GBTC",
+        "uhkd": "HKTC",
+        "uidr": "IDTC",
+        "uinr": "INTC",
+        "ujpy": "JPTC",
+        "ukrw": "KRTC",
+        "umnt": "MNTC",
+        "umyr": "MYTC",
+        "unok": "NOTC",
+        "uphp": "PHTC",
+        "usdr": "SDTC",
+        "usek": "SETC",
+        "usgd": "SGTC",
+        "uthb": "THTC",
+        "utwd": "TWTC"
+    }
+
+    // Tableau qui contiendra la liste des lignes à afficher
     const [balanceDuCompte, setBalanceDuCompte] = useState([]);
 
     // Connexion au LCD
@@ -35,12 +65,11 @@ const Finder = () => {
 
     return (
         <div>
-            <br />
-            Détail du compte : <strong>{addresse}</strong>
-            <br />
-            <br />
-        
-            <table border="1">
+            <h1>Finder (terra classic)</h1>
+            <hr />
+            <p>Détail du compte : <strong>{addresse}</strong></p>
+            <br />        
+            <table border="1" cellpadding="10px" cellspacing="0px">
                 <thead>
                     <tr>
                         <th>Ligne</th>
@@ -55,7 +84,7 @@ const Finder = () => {
                                 return <tr key={index}>
                                     <td>#{index}</td>
                                     <td>{data.amount / 1000000.0}</td>
-                                    <td>{data.denom}</td>
+                                    <td>{tblCorrespondanceValeurs[data.denom]}</td>
                                 </tr>
                             } else {
                                 return null;
