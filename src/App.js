@@ -1,10 +1,10 @@
 import React from 'react';
-import Test1 from './components/Test1'
+import Finder from './components/Finder'
 
 const App = () => {
   return (
     <div>
-      <Test1 />
+      <Finder />
     </div>
   );
 };
