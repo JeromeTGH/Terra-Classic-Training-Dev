@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { LCDClient, Coins } from '@terra-money/terra.js';
 
-const Finder = () => {
+const Terra1accountFinder = () => {
 
     // Adresse du compte visé
     const addresse = 'terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v';
+    const reseau = 'Terra Classic';
+    const IDchaine = 'columbus-5';
+    const LCDurl = 'https://columbus-lcd.terra.dev';
 
     // Tableau de correspondance des valeurs
     const tblCorrespondanceValeurs = {
-        "uluna": "LUNC",
+        "uluna": "Lunc",
         "uusd": "USTC",
         "uaud": "AUTC",
         "ucad": "CATC",
@@ -39,8 +42,8 @@ const Finder = () => {
 
     // Connexion au LCD
     const lcd = new LCDClient({
-        URL: 'https://columbus-lcd.terra.dev',
-        chainID: 'columbus-5',
+        URL: LCDurl,
+        chainID: IDchaine,
         isClassic: true
     });
 
@@ -65,9 +68,11 @@ const Finder = () => {
 
     return (
         <div>
-            <h1>Finder (terra classic)</h1>
+            <h1>Terra1 account Finder (terra classic)</h1>
             <hr />
             <p>Détail du compte : <strong>{addresse}</strong></p>
+            <p>Réseau <strong>{reseau} ({IDchaine})</strong><br />
+            URL du LCD : <strong>{LCDurl}</strong></p>
             <br />        
             <table border="1" cellpadding="10px" cellspacing="0px">
                 <thead>
@@ -98,4 +103,4 @@ const Finder = () => {
     );
 };
 
-export default Finder;
+export default Terra1accountFinder;
