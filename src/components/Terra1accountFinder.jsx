@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LCDClient, Coins } from '@terra-money/terra.js';
 
 const Terra1accountFinder = () => {
