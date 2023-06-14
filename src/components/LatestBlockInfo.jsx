@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LCDClient } from '@terra-money/terra.js';
 
 
-const LastestBlockInfo = () => {
+const LatestBlockInfo = () => {
 
     // Adresse du compte visé
     const reseau = 'Terra Classic';
@@ -33,7 +33,7 @@ const LastestBlockInfo = () => {
     
     return (
         <div>
-            <h1>Lastest Block Info (terra classic)</h1>
+            <h1>Latest Block Info (terra classic)</h1>
             <hr />
             <div>
                 Réseau <strong>{reseau} ({IDchaine})</strong><br />
@@ -64,4 +64,4 @@ const LastestBlockInfo = () => {
     );
 };
 
-export default LastestBlockInfo;
+export default LatestBlockInfo;

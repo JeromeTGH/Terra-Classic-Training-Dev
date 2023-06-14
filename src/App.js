@@ -1,12 +1,12 @@
 import React from 'react';
-// import Terra1accountFinder from './components/Terra1accountFinder'
-import LastestBlockInfo from './components/LastestBlockInfo';
+// import Terra1accountFinder from './components/Terra1accountFinder';
+import LatestBlockInfo from './components/LatestBlockInfo';
 
 const App = () => {
   return (
     <div>
       {/* <Terra1accountFinder /> */}
-      <LastestBlockInfo />
+      <LatestBlockInfo />
       <br />
       <hr />
       <p><em>Nota : aucune navigation ou formulaire créé pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
