@@ -1,16 +1,28 @@
 import React from 'react';
-// import Terra1accountFinder from './components/Terra1accountFinder';
-import LatestBlockInfo from './components/LatestBlockInfo';
+import AppRoutes from './components/AppRoutes';
 
 const App = () => {
   return (
-    <div>
-      {/* <Terra1accountFinder /> */}
-      <LatestBlockInfo />
-      <br />
-      <hr />
-      <p><em>Nota : aucune navigation ou formulaire créé pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
-    </div>
+    <>
+      <header>
+        <h1>Terra Classic Training Dev</h1>
+        <nav>
+          <a href="/">Accueil</a> &nbsp;&nbsp;
+          <a href="/terra1accountfinder">Terra1accountFinder</a> &nbsp;&nbsp;
+          <a href="/latestblockinfo">LatestBlockInfo</a> &nbsp;&nbsp;
+        </nav>
+        <hr />
+        <br />
+      </header>
+      <main>
+        <AppRoutes />
+      </main>
+      <footer>
+        <br />
+        <hr />
+        <p><em>Nota : aucune navigation ou formulaire créé pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
+      </footer>
+    </>
   );
 };
 

@@ -32,9 +32,7 @@ const LatestBlockInfo = () => {
     }, [])
     
     return (
-        <div>
-            <h1>Latest Block Info (terra classic)</h1>
-            <hr />
+        <>
             <div>
                 Réseau <strong>{reseau} ({IDchaine})</strong><br />
                 URL du LCD : <strong>{LCDurl}</strong>
@@ -60,7 +58,7 @@ const LatestBlockInfo = () => {
                     }) : null}
                 </ul>
             </div>
-        </div>
+        </>
     );
 };
 

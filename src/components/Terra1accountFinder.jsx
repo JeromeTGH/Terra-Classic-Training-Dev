@@ -66,10 +66,8 @@ const Terra1accountFinder = () => {
     
 
     return (
-        <div>
-            <h1>Terra1 account Finder (terra classic)</h1>
-            <hr />
-            <p>Détail du compte : <strong>{addresse}</strong></p>
+        <>
+            <div>Détail du compte : <strong>{addresse}</strong></div>
             <p>Réseau <strong>{reseau} ({IDchaine})</strong><br />
             URL du LCD : <strong>{LCDurl}</strong></p>
             <br />        
@@ -98,7 +96,7 @@ const Terra1accountFinder = () => {
                     }
                 </tbody>
             </table>
-        </div>
+        </>
     );
 };
 
