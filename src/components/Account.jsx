@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LCDClient, Coins } from '@terra-money/terra.js';
 import { useParams } from 'react-router-dom';
 
-const Terra1accountFinder = () => {
+const Account = () => {
 
     const [ etatPage, setEtatPage ] = useState('vide')
 
@@ -18,7 +18,7 @@ const Terra1accountFinder = () => {
 
     // Tableau de correspondance des valeurs
     const tblCorrespondanceValeurs = {
-        "uluna": "Lunc",
+        "uluna": "LUNC",
         "uusd": "USTC",
         "uaud": "AUTC",
         "ucad": "CATC",
@@ -119,14 +119,24 @@ const Terra1accountFinder = () => {
                                             ) : (
                                                 <>
                                                 {balanceDuCompte.map((data, index) => {
-                                                    if(data.denom.charAt(0) === 'u') {
+                                                    if(data.denom === 'uluna' || data.denom === 'uusd') {
+                                                        return <tr key={index}>
+                                                            <td>#{index}</td>
+                                                            <td>{data.amount / 1000000.0}</td>
+                                                            <td>*** {tblCorrespondanceValeurs[data.denom]}</td>
+                                                        </tr>
+                                                    } else if(data.denom.charAt(0) === 'u') {
                                                         return <tr key={index}>
                                                             <td>#{index}</td>
                                                             <td>{data.amount / 1000000.0}</td>
                                                             <td>{tblCorrespondanceValeurs[data.denom]}</td>
                                                         </tr>
                                                     } else {
-                                                        return null;
+                                                            return <tr>
+                                                            <td>#{index}</td>
+                                                            <td>{data.amount / 1000000.0}</td>
+                                                            <td>Valeur inconnnue : {data.denom}</td>
+                                                        </tr>
                                                     }
                                                 })
                                                 }
@@ -151,4 +161,4 @@ const Terra1accountFinder = () => {
     );
 };
 
-export default Terra1accountFinder;
+export default Account;

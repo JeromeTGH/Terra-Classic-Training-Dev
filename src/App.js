@@ -9,7 +9,7 @@ const App = () => {
         <h1>Terra Classic Training Dev</h1>
         <nav>
           <Link to="/">Accueil</Link> &nbsp;&nbsp;
-          <Link to="/terra1accountfinder/terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v">Terra1accountFinder</Link> &nbsp;&nbsp;
+          <Link to="/account/terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v">Account (exemple)</Link> &nbsp;&nbsp;
           <Link to="/latestblockinfo">LatestBlockInfo</Link> &nbsp;&nbsp;
         </nav>
         <hr />

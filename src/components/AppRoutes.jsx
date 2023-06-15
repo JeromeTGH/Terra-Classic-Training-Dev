@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Routes, Route } from 'react-router-dom';
 
-import Terra1accountFinder from './Terra1accountFinder';
+import Account from './Account';
 import LatestBlockInfo from './LatestBlockInfo';
 
 import PageAccueil from './PageAccueil';
@@ -12,9 +12,9 @@ const AppRoutes = () => {
         <>
             <Routes>
                 <Route path="/" exact element={<PageAccueil />} />
-                <Route path="/terra1accountfinder" >
-                    <Route path="" element={<Terra1accountFinder />} />
-                    <Route path=":cptNum" element={<Terra1accountFinder />} />
+                <Route path="/account" >
+                    <Route path="" element={<Account />} />
+                    <Route path=":cptNum" element={<Account />} />
                 </Route>
                 <Route path="/latestblockinfo" exact element={<LatestBlockInfo />} />
                 <Route path="/404" exact element={<Page404 />} />
