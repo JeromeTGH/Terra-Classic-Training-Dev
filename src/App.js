@@ -20,7 +20,7 @@ const App = () => {
       <footer>
         <br />
         <hr />
-        <p><em>Nota : aucune navigation ou formulaire créé pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
+        <p><em>Nota : esthétique et ergonomie non travaillées pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
       </footer>
     </>
   );
