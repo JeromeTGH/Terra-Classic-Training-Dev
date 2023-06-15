@@ -10,7 +10,7 @@ const App = () => {
         <nav>
           <Link to="/">Accueil</Link> &nbsp;&nbsp;
           <Link to="/account/terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v">Account (exemple)</Link> &nbsp;&nbsp;
-          <Link to="/block">LatestBlockInfo</Link> &nbsp;&nbsp;
+          <Link to="/block/13232711">Block (exemple)</Link> &nbsp;&nbsp;
         </nav>
         <hr />
         <br />
@@ -21,7 +21,7 @@ const App = () => {
       <footer>
         <br />
         <hr />
-        <p><em>Nota : esthétique et ergonomie non travaillées pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
+        <p><em>Nota : esthétique et ergonomie non travaillées pour l'instant (phase d'apprentissage d'interactions avec le LCD de la blockchain Terra Classic)</em></p>
       </footer>
     </BrowserRouter>
   );

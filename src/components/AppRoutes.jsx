@@ -3,7 +3,7 @@ import { Navigate, Routes, Route } from 'react-router-dom';
 
 import PageAccueil from './pages/PageAccueil';
 import PageAccount from './pages/PageAccount';
-import PageBlockInfo from './pages/PageBlockInfo';
+import PageBlock from './pages/PageBlock';
 import Page404 from './pages/Page404';
 
 const AppRoutes = () => {
@@ -16,8 +16,8 @@ const AppRoutes = () => {
                     <Route path=":cptNum" element={<PageAccount />} />
                 </Route>
                 <Route path="/block">
-                    <Route path="" element={<PageBlockInfo />} />
-                    <Route path=":blockNum" element={<PageBlockInfo />} />
+                    <Route path="" element={<PageBlock />} />
+                    <Route path=":blockNum" element={<PageBlock />} />
                 </Route>
                 <Route path="/404" exact element={<Page404 />} />
                 <Route path="*" element={<Navigate replace to="/404" />} />

@@ -8,6 +8,7 @@ import PageAccountEnCoursDeChargement from './PageAccountEnCoursDeChargement';
 import PageAccountAucuneAdresseRenseignee from './PageAccountAucuneAdresseRenseignee';
 import PageAccountErreurLCD from './PageAccountErreurLCD';
 import PageAccountAfficheDetail from './PageAccountAfficheDetail';
+import PageAccountMessageLCD from './PageAccountMessageLCD';
 
 const PageAccount = () => {  
 
@@ -25,7 +26,7 @@ const PageAccount = () => {
         isClassic: true
     });
 
-    // Récupération d'infos, au chargement du component
+    // Récupération d'infos, au chargement du component (et mise à jour, à chaque changement de cptNum)
     useEffect(() => {
 
         if(cptNum === undefined)
@@ -35,10 +36,15 @@ const PageAccount = () => {
         } else {
             // Chargement d'un compte donné (via son adresse)
             lcd.bank.balance(cptNum).then(res => {
-                console.log("Réponse LCD", res[0]);
-                const mesCoins = new Coins(res[0]);
-                setEtatPage('ok');
-                setBalanceDuCompte(mesCoins.toData());           
+                if(res[0]) {
+                    //console.log("Réponse LCD", res[0]);
+                    const mesCoins = new Coins(res[0]);
+                    setEtatPage('ok');
+                    setBalanceDuCompte(mesCoins.toData());
+                } else {
+                    setEtatPage('message');
+                    setBalanceDuCompte(res);
+                }
             }).catch(err => {
                 setEtatPage(err.message);
                 console.log(err);
@@ -57,6 +63,8 @@ const PageAccount = () => {
                 return <PageAccountAucuneAdresseRenseignee />;
             case 'ok':
                 return <PageAccountAfficheDetail numerocpt={cptNum} donnees={balanceDuCompte} />;
+            case 'message':
+                return <PageAccountMessageLCD message={balanceDuCompte} />;
             default:
                 return <PageAccountErreurLCD erreur={etatPage} />;
         }

@@ -5,7 +5,7 @@ import { reseau, IDchaine, LCDurl, tblCorrespondanceValeurs } from '../../../uti
 const PageAccountAfficheDetail = (props) => {
     return (
         <>
-            <div>Détail du compte : <strong>{props.numerocpt}</strong></div>
+            <div>Adresse du compte : <strong>{props.numerocpt}</strong></div>
             <p>Réseau <strong>{reseau} ({IDchaine})</strong><br />
             URL du LCD : <strong>{LCDurl}</strong></p>
             <br />        
