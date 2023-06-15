@@ -1,11 +1,10 @@
 import React from 'react';
 import { Navigate, Routes, Route } from 'react-router-dom';
 
-import Account from './Account';
-import LatestBlockInfo from './LatestBlockInfo';
-
-import PageAccueil from './PageAccueil';
-import Page404 from './Page404';
+import PageAccueil from './pages/PageAccueil';
+import PageAccount from './pages/PageAccount';
+import PageBlockInfo from './pages/PageBlockInfo';
+import Page404 from './pages/Page404';
 
 const AppRoutes = () => {
     return (
@@ -13,10 +12,13 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/" exact element={<PageAccueil />} />
                 <Route path="/account" >
-                    <Route path="" element={<Account />} />
-                    <Route path=":cptNum" element={<Account />} />
+                    <Route path="" element={<PageAccount />} />
+                    <Route path=":cptNum" element={<PageAccount />} />
                 </Route>
-                <Route path="/latestblockinfo" exact element={<LatestBlockInfo />} />
+                <Route path="/block">
+                    <Route path="" element={<PageBlockInfo />} />
+                    <Route path=":blockNum" element={<PageBlockInfo />} />
+                </Route>
                 <Route path="/404" exact element={<Page404 />} />
                 <Route path="*" element={<Navigate replace to="/404" />} />
             </Routes>

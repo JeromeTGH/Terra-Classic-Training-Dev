@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { LCDClient } from '@terra-money/terra.js';
+import { useParams } from 'react-router-dom';
 
+const PageBlockInfo = () => {
 
-const LatestBlockInfo = () => {
+    const [ etatPage, setEtatPage ] = useState('vide')
+
+    // Récupération du numéro de compte, éventuellement passé en argument
+    const { blocktNum } = useParams();
+
 
     // Adresse du compte visé
     const reseau = 'Terra Classic';
@@ -82,4 +88,4 @@ const LatestBlockInfo = () => {
     );
 };
 
-export default LatestBlockInfo;
+export default PageBlockInfo;
