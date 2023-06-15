@@ -60,7 +60,7 @@ const Terra1accountFinder = () => {
 
 
     // const offerCoin = new Coin('uusd', '1000000');
-    // terra.market.swapRate(offerCoin, 'ukrw').then(c => {
+    // lcd.market.swapRate(offerCoin, 'ukrw').then(c => {
     // console.log(`${offerCoin.toString()} can be swapped for ${c.toString()}`);
     // });
     
@@ -81,18 +81,26 @@ const Terra1accountFinder = () => {
                 </thead>
                 <tbody>
                     {
-                        balanceDuCompte.map((data, index) => {
-                            if(data.denom.charAt(0) === 'u') {
-                                return <tr key={index}>
-                                    <td>#{index}</td>
-                                    <td>{data.amount / 1000000.0}</td>
-                                    <td>{tblCorrespondanceValeurs[data.denom]}</td>
-                                </tr>
-                            } else {
-                                return null;
+                        balanceDuCompte.length === 0 ? (
+                            <>
+                                <tr><td colSpan={3}>Aucune donnée disponible</td></tr>
+                            </>
+                        ) : (
+                            <>
+                            {balanceDuCompte.map((data, index) => {
+                                if(data.denom.charAt(0) === 'u') {
+                                    return <tr key={index}>
+                                        <td>#{index}</td>
+                                        <td>{data.amount / 1000000.0}</td>
+                                        <td>{tblCorrespondanceValeurs[data.denom]}</td>
+                                    </tr>
+                                } else {
+                                    return null;
+                                }
+                            })
                             }
-
-                        })
+                            </>
+                        )
                     }
                 </tbody>
             </table>
