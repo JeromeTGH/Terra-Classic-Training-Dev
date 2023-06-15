@@ -1,15 +1,16 @@
 import React from 'react';
 import AppRoutes from './components/AppRoutes';
+import { Link, BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <header>
         <h1>Terra Classic Training Dev</h1>
         <nav>
-          <a href="/">Accueil</a> &nbsp;&nbsp;
-          <a href="/terra1accountfinder">Terra1accountFinder</a> &nbsp;&nbsp;
-          <a href="/latestblockinfo">LatestBlockInfo</a> &nbsp;&nbsp;
+          <Link to="/">Accueil</Link> &nbsp;&nbsp;
+          <Link to="/terra1accountfinder/terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v">Terra1accountFinder</Link> &nbsp;&nbsp;
+          <Link to="/latestblockinfo">LatestBlockInfo</Link> &nbsp;&nbsp;
         </nav>
         <hr />
         <br />
@@ -22,7 +23,7 @@ const App = () => {
         <hr />
         <p><em>Nota : esthétique et ergonomie non travaillées pour l'instant (phase d'apprentissage d'interactions avec LCD blockchain Terra Classic)</em></p>
       </footer>
-    </>
+    </BrowserRouter>
   );
 };
 
