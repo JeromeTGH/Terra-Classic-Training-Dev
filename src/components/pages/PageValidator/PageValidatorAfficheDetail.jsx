@@ -1,12 +1,18 @@
 import React from 'react';
 
+// import { ValConsPublicKey } from '@terra-money/terra.js';
+
 const PageValidatorAfficheDetail = (props) => {
+
+    // const adrCons = new ValConsPublicKey(props.infosvalidateur.consensus_pubkey.key).address();
+
     return (
         <>
             <h2>Adresse du validateur</h2>
             <div>Adresse du validateur : <strong>{props.adressevalidateur}</strong></div>
             <div>Adresse du compte validateur : <strong>{props.adressecomptevalidateur}</strong></div>
-            <div>Clef public consensus : <strong>{props.infosvalidateur.consensus_pubkey.key}</strong></div>
+            <div>Clé publique consensus : <strong>{props.infosvalidateur.consensus_pubkey.key}</strong></div>
+            {/* <div>Adr cons : <strong>{adrCons}</strong></div> */}
             <br />
             <h2>Infos du validateur</h2>
             <div>Détails : <strong>{props.infosvalidateur.description.details}</strong></div>

@@ -49,7 +49,6 @@ const PageValidator = () => {
                 setEtatPage(err.message);
                 console.log(err);
             })
-
         }
         
     }, [valAdr])

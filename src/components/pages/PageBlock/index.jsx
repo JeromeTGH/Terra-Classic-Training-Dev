@@ -15,8 +15,8 @@ const PageBlock = () => {
     const { blockNum } = useParams();       // Ne rien mettre revient à demander à voir le "latest" (le dernier)
 
     // Variables react
-    const [ etatPage, setEtatPage ] = useState('vide');         // Variable d'état, pour conditionner l'affichage à l'écran
-    const [ infosBlock, setInfosBlock ] = useState();           // Tableau qui contiendra les données retournées par le LCD
+    const [ etatPage, setEtatPage ] = useState('vide');             // Variable d'état, pour conditionner l'affichage à l'écran
+    const [ infosBlock, setInfosBlock ] = useState();               // Tableau qui contiendra les données retournées par le LCD
 
     // Connexion au LCD
     const lcd = new LCDClient({
@@ -29,27 +29,6 @@ const PageBlock = () => {
     // Récupération d'infos, au chargement du component (et mise à jour, à chaque changement de blockNum)
     useEffect(() => {
 
-        if(blockNum === undefined)
-        {
-            // Si on a aucun numéro de block, on va demander à voir le dernier ("latest")
-            lcd.tendermint.blockInfo().then(res => {
-                if(res.block.header)
-                {
-                    //console.log("res.block_id", res.block_id);
-                    console.log("res.block", res.block);
-                    setEtatPage('ok');
-                    setInfosBlock(res.block);
-
-                }
-                else {
-                    setEtatPage('message');
-                    setInfosBlock(res);
-                }
-            }).catch(err => {
-                setEtatPage(err.message);
-                console.log(err);
-            })
-        } else {
             // Chargement d'un block donné
             lcd.tendermint.blockInfo(blockNum).then(res => {
                 if(res.block.header) {
@@ -57,6 +36,7 @@ const PageBlock = () => {
                     console.log("res.block", res.block);
                     setEtatPage('ok');
                     setInfosBlock(res.block);
+
                 }
                 else {
                     setEtatPage('message');
@@ -67,7 +47,7 @@ const PageBlock = () => {
                 console.log(err);
             })
 
-        }
+
         
     }, [blockNum])
 
