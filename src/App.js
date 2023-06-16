@@ -11,6 +11,7 @@ const App = () => {
           <Link to="/">Accueil</Link> &nbsp;&nbsp;
           <Link to="/account/terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v">Account (exemple)</Link> &nbsp;&nbsp;
           <Link to="/block/13232711">Block (exemple)</Link> &nbsp;&nbsp;
+          <Link to="/validators">Liste de tous les validateurs</Link> &nbsp;&nbsp;
         </nav>
         <hr />
         <br />

@@ -4,10 +4,12 @@ import { useParams } from 'react-router-dom';
 
 import { IDchaine, LCDurl } from '../../../utils/appParametres';
 
-import PageBlockEnCoursDeChargement from './PageBlockEnCoursDeChargement';
-import PageBlockErreurLCD from './PageBlockErreurLCD';
-import PageBlockMessageLCD from './PageBlockMessageLCD';
+import PageBlockEnCoursDeChargement from '../ComponentEnCoursDeChargement';
 import PageBlockAfficheDetail from './PageBlockAfficheDetail';
+
+import ComponentEnCoursDeChargement from '../ComponentEnCoursDeChargement';
+import ComponentErreurLCD from '../ComponentErreurLCD';
+import ComponentMessageLCD from '../ComponentMessageLCD';
 
 const PageBlock = () => {
 
@@ -33,10 +35,12 @@ const PageBlock = () => {
         {
             // Si on a aucun numéro de block, on va demander à voir le dernier ("latest")
             lcd.tendermint.blockInfo().then(res => {
-                //console.log("res.block_id", res.block_id);
-                //console.log("res.block", res.block);
                 if(res.block.header)
+                {
+                    //console.log("res.block_id", res.block_id);
+                    //console.log("res.block", res.block);
                     setEtatPage('ok');
+                }
                 else
                     setEtatPage('message');
                 setInfosBlock(res.block)
@@ -47,10 +51,11 @@ const PageBlock = () => {
         } else {
             // Chargement d'un block donné
             lcd.tendermint.blockInfo(blockNum).then(res => {
-                //console.log("res.block_id", res.block_id);
-                //console.log("res.block", res.block);
-                if(res.block.header)
+                if(res.block.header) {
+                    //console.log("res.block_id", res.block_id);
+                    console.log("res.block", res.block);
                     setEtatPage('ok');
+                }
                 else
                     setEtatPage('message');
                 setInfosBlock(res.block)
@@ -67,19 +72,19 @@ const PageBlock = () => {
     const renderSwitch = () => {
         switch(etatPage) {
             case 'vide':
-                return <PageBlockEnCoursDeChargement />;
+                return <ComponentEnCoursDeChargement />;
             case 'message':
-                return <PageBlockMessageLCD message={infosBlock} />;
+                return <ComponentMessageLCD message={infosBlock} />;
             case 'ok':
                 return <PageBlockAfficheDetail donnees={infosBlock} />;
             default:
-                return <PageBlockErreurLCD erreur={etatPage} />;
+                return <ComponentErreurLCD erreur={etatPage} />;
         }
     }
     
     return (
         <>
-        {renderSwitch()}
+           {renderSwitch()}
         </>
     );
     

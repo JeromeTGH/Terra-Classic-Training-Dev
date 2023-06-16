@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PageAccountMessageLCD = (props) => {
+const ComponentMessageLCD = (props) => {
     return (
         <>
             <br />
@@ -10,4 +10,4 @@ const PageAccountMessageLCD = (props) => {
     );
 };
 
-export default PageAccountMessageLCD;
+export default ComponentMessageLCD;

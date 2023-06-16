@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PageAccountErreurLCD = (props) => {
+const ComponentErreurLCD = (props) => {
     return (
         <>
             <br />
@@ -10,4 +10,4 @@ const PageAccountErreurLCD = (props) => {
     );
 };
 
-export default PageAccountErreurLCD;
+export default ComponentErreurLCD;

@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 
 import { IDchaine, LCDurl } from '../../../utils/appParametres';
 
-import PageAccountEnCoursDeChargement from './PageAccountEnCoursDeChargement';
 import PageAccountAucuneAdresseRenseignee from './PageAccountAucuneAdresseRenseignee';
-import PageAccountErreurLCD from './PageAccountErreurLCD';
 import PageAccountAfficheDetail from './PageAccountAfficheDetail';
-import PageAccountMessageLCD from './PageAccountMessageLCD';
+
+import ComponentEnCoursDeChargement from '../ComponentEnCoursDeChargement';
+import ComponentErreurLCD from '../ComponentErreurLCD';
+import ComponentMessageLCD from '../ComponentMessageLCD';
 
 const PageAccount = () => {  
 
@@ -58,15 +59,15 @@ const PageAccount = () => {
     const renderSwitch = () => {
         switch(etatPage) {
             case 'vide':
-                return <PageAccountEnCoursDeChargement />;
+                return <ComponentEnCoursDeChargement />;
             case 'adresseManquante':
                 return <PageAccountAucuneAdresseRenseignee />;
             case 'ok':
                 return <PageAccountAfficheDetail numerocpt={cptNum} donnees={balanceDuCompte} />;
             case 'message':
-                return <PageAccountMessageLCD message={balanceDuCompte} />;
+                return <ComponentMessageLCD message={balanceDuCompte} />;
             default:
-                return <PageAccountErreurLCD erreur={etatPage} />;
+                return <ComponentErreurLCD erreur={etatPage} />;
         }
     }
 
