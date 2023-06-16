@@ -37,6 +37,7 @@ const PageAccount = () => {
         } else {
             // Chargement d'un compte donné (via son adresse)
             lcd.bank.balance(cptNum).then(res => {
+                //console.log("Réponse LCD", res);
                 if(res[0]) {
                     //console.log("Réponse LCD", res[0]);
                     const mesCoins = new Coins(res[0]);

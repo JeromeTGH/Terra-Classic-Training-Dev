@@ -1,0 +1,26 @@
+import React from 'react';
+
+const PageValidatorAfficheDetail = (props) => {
+    return (
+        <>
+            <h2>Adresse du validateur</h2>
+            <div>Adresse du validateur : <strong>{props.adressevalidateur}</strong></div>
+            <div>Adresse du compte validateur : <strong>{props.adressecomptevalidateur}</strong></div>
+            <div>Clef public consensus : <strong>{props.infosvalidateur.consensus_pubkey.key}</strong></div>
+            <br />
+            <h2>Infos du validateur</h2>
+            <div>Détails : <strong>{props.infosvalidateur.description.details}</strong></div>
+            <div>Identité : <strong>{props.infosvalidateur.description.identity}</strong></div>
+            <div>Moniker : <strong>{props.infosvalidateur.description.moniker}</strong></div>
+            <div>Contact : <strong>{props.infosvalidateur.description.security_contact}</strong></div>
+            <div>Site web : <strong>{props.infosvalidateur.description.website}</strong></div>
+            <br />
+            <div>Jailed : <strong>{props.infosvalidateur.jailed ? 'oui' : 'non'}</strong></div>
+            <div>Status : <strong>{props.infosvalidateur.status}</strong></div>
+            <br />
+            <h2></h2>
+        </>
+    );
+};
+
+export default PageValidatorAfficheDetail;

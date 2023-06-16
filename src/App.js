@@ -12,6 +12,7 @@ const App = () => {
           <Link to="/account/terra1x46rqay4d3cssq8gxxvqz8xt6nwlz4td20k38v">Account (exemple)</Link> &nbsp;&nbsp;
           <Link to="/block/13232711">Block (exemple)</Link> &nbsp;&nbsp;
           <Link to="/validators">Liste de tous les validateurs</Link> &nbsp;&nbsp;
+          <Link to="validator/terravaloper12g4nkvsjjnl0t7fvq3hdcw7y8dc9fq69nyeu9q">Validateur (exemple)</Link> &nbsp;&nbsp;
         </nav>
         <hr />
         <br />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PageValidatorsAfficheListe = (props) => {
     return (
         <>
-            <ul>
+            <ol>
                 {props.validateurs ? props.validateurs.map((validator, index) => {
                     return validator.status === "BOND_STATUS_BONDED" ? (
                         <li key={index}>
@@ -22,7 +22,7 @@ const PageValidatorsAfficheListe = (props) => {
                         //     &nbsp;{validator.jailed ? '(jailed)' : ''}
                         // </li>
                 )}) : null}
-            </ul>
+            </ol>
         </>
     );
 };

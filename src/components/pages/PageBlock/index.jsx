@@ -4,9 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { IDchaine, LCDurl } from '../../../utils/appParametres';
 
-import PageBlockEnCoursDeChargement from '../ComponentEnCoursDeChargement';
 import PageBlockAfficheDetail from './PageBlockAfficheDetail';
-
 import ComponentEnCoursDeChargement from '../ComponentEnCoursDeChargement';
 import ComponentErreurLCD from '../ComponentErreurLCD';
 import ComponentMessageLCD from '../ComponentMessageLCD';
@@ -38,12 +36,15 @@ const PageBlock = () => {
                 if(res.block.header)
                 {
                     //console.log("res.block_id", res.block_id);
-                    //console.log("res.block", res.block);
+                    console.log("res.block", res.block);
                     setEtatPage('ok');
+                    setInfosBlock(res.block);
+
                 }
-                else
+                else {
                     setEtatPage('message');
-                setInfosBlock(res.block)
+                    setInfosBlock(res);
+                }
             }).catch(err => {
                 setEtatPage(err.message);
                 console.log(err);
@@ -55,14 +56,17 @@ const PageBlock = () => {
                     //console.log("res.block_id", res.block_id);
                     console.log("res.block", res.block);
                     setEtatPage('ok');
+                    setInfosBlock(res.block);
                 }
-                else
+                else {
                     setEtatPage('message');
-                setInfosBlock(res.block)
+                    setInfosBlock(res);
+                }
             }).catch(err => {
                 setEtatPage(err.message);
                 console.log(err);
             })
+
         }
         
     }, [blockNum])

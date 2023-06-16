@@ -12,7 +12,8 @@ const PageBlockAfficheDetail = (props) => {
             <h2>Header</h2>
             <div>
                 Height : {props.donnees ? props.donnees.header.height : ''}<br />
-                Time : {props.donnees ? props.donnees.header.time : ''}
+                Time : {props.donnees ? props.donnees.header.time : ''}<br />
+                Hash Validateur : {props.donnees.header.validators_hash}
             </div>
             <h2>Last commit</h2>
             <div>
