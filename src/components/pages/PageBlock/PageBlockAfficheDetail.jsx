@@ -31,12 +31,32 @@ const PageBlockAfficheDetail = (props) => {
             <h2>Data</h2>
             <div>
                 Nombre de transactions : <strong>{props.donnees ? props.donnees.data.txs.length : ''}</strong><br />
-                <ul>
+                <ol>
                     {props.donnees ? props.donnees.data.txs.map((data, index) => {
                         return <li key={index}>TX&nbsp;#{index}&nbsp;:&nbsp;{data}</li>
                     }) : null}
-                </ul>
+                </ol>
             </div>
+            <h2>Validator Set</h2>
+            <div>
+                Nombre de validateurs : <strong>{props.validateurs ? props.validateurs[1].total : ''}</strong><br />
+                <ol>
+                    {props.validateurs ? props.validateurs[0].map((data, index) => {
+                        return <li key={index}>
+                            Adresse : {data.address}<br />
+                            &nbsp;&nbsp;Proposer priotiry : {data.proposer_priority}<br />
+                            &nbsp;&nbsp;Voting power : {data.voting_power}<br />
+                            &nbsp;&nbsp;Public key : {data.pub_key.key} (@type : "/cosmos.crypto.ed25519.PubKey")
+                        </li>
+                    }) : null}
+                </ol>
+            </div>
+            <h2>Remarques</h2>
+            <div><mark>
+                Problèmes rencontrés :<br />
+                - Problème de correspondance entre ce "proposer_address" avec la pubkey des validateurs, via le module Staking (validators)<br />
+                - ValidatorSet limité à 100 (voir "Pagination")
+            </mark></div>
         </>
     );
 };

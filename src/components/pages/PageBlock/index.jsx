@@ -17,6 +17,7 @@ const PageBlock = () => {
     // Variables react
     const [ etatPage, setEtatPage ] = useState('vide');             // Variable d'état, pour conditionner l'affichage à l'écran
     const [ infosBlock, setInfosBlock ] = useState();               // Tableau qui contiendra les données retournées par le LCD
+    const [ validatorSet, setValidatorSet ] = useState();
 
     // Connexion au LCD
     const lcd = new LCDClient({
@@ -33,9 +34,17 @@ const PageBlock = () => {
             lcd.tendermint.blockInfo(blockNum).then(res => {
                 if(res.block.header) {
                     //console.log("res.block_id", res.block_id);
-                    console.log("res.block", res.block);
+                    console.log("Block Info", res.block);
                     setEtatPage('ok');
                     setInfosBlock(res.block);
+
+                    lcd.tendermint.validatorSet(blockNum, {'pagination.limit': 102}).then(res => {
+                        console.log("Validator Set", res);
+                        setValidatorSet(res);
+                    }).catch(err => {
+                        setEtatPage(err.message);
+                        console.log(err);
+                    })
 
                 }
                 else {
@@ -60,7 +69,7 @@ const PageBlock = () => {
             case 'message':
                 return <ComponentMessageLCD message={infosBlock} />;
             case 'ok':
-                return <PageBlockAfficheDetail donnees={infosBlock} />;
+                return <PageBlockAfficheDetail donnees={infosBlock} validateurs={validatorSet} />;
             default:
                 return <ComponentErreurLCD erreur={etatPage} />;
         }

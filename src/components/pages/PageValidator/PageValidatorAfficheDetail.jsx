@@ -1,10 +1,10 @@
 import React from 'react';
 
-// import { ValConsPublicKey } from '@terra-money/terra.js';
+import { ValConsPublicKey } from '@terra-money/terra.js';
 
 const PageValidatorAfficheDetail = (props) => {
 
-    // const adrCons = new ValConsPublicKey(props.infosvalidateur.consensus_pubkey.key).address();
+    const adrCons = new ValConsPublicKey(props.infosvalidateur.consensus_pubkey.key).address();
 
     return (
         <>
@@ -12,7 +12,7 @@ const PageValidatorAfficheDetail = (props) => {
             <div>Adresse du validateur : <strong>{props.adressevalidateur}</strong></div>
             <div>Adresse du compte validateur : <strong>{props.adressecomptevalidateur}</strong></div>
             <div>Clé publique consensus : <strong>{props.infosvalidateur.consensus_pubkey.key}</strong></div>
-            {/* <div>Adr cons : <strong>{adrCons}</strong></div> */}
+            <div>Adr cons : <strong>{adrCons}</strong></div>
             <br />
             <h2>Infos du validateur</h2>
             <div>Détails : <strong>{props.infosvalidateur.description.details}</strong></div>
@@ -24,7 +24,11 @@ const PageValidatorAfficheDetail = (props) => {
             <div>Jailed : <strong>{props.infosvalidateur.jailed ? 'oui' : 'non'}</strong></div>
             <div>Status : <strong>{props.infosvalidateur.status}</strong></div>
             <br />
-            <h2></h2>
+            <h2>Remarques</h2>
+            <div><mark>
+                Problèmes rencontrés :<br />
+                - Problème de correspondance entre le "consensus_pubkey" de ces validateurs et le "proposer_address" d'un "BlockInfo" quelconque
+            </mark></div>
         </>
     );
 };
