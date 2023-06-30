@@ -1,5 +1,5 @@
 import React from 'react';
-import AppRoutes from './components/AppRoutes';
+import AppRoutes from './AppRoutes';
 import { Link, BrowserRouter } from 'react-router-dom';
 
 const App = () => {

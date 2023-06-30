@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LCDClient, Coins } from '@terra-money/terra.js';
 import { useParams } from 'react-router-dom';
 
-import { IDchaine, LCDurl } from '../../../utils/appParametres';
+import { IDchaine, LCDurl } from '../../AppParametres';
 
 import PageAccountAucuneAdresseRenseignee from './PageAccountAucuneAdresseRenseignee';
 import PageAccountAfficheDetail from './PageAccountAfficheDetail';

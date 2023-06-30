@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { LCDClient, AccAddress } from '@terra-money/terra.js';
 import { useParams } from 'react-router-dom';
 
-import { IDchaine, LCDurl } from '../../../utils/appParametres';
+import { IDchaine, LCDurl } from '../../AppParametres';
 
 import PageValidatorAucuneAdresseRenseignee from './PageValidatorAucuneAdresseRenseignee';
 import PageValidatorAfficheDetail from './PageValidatorAfficheDetail';
@@ -39,6 +39,7 @@ const PageValidator = () => {
             // Chargement d'un block donné
             lcd.staking.validator(valAdr).then(res => {
                 console.log("res", res);
+                //const b64i = Buffer.from(bech32.fromWords(bech32.decode(res.consensus_pubkey.key).words)).toString('base64')
                 if(res.commission)
                     setEtatPage('ok');
                 else

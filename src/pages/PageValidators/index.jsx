@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LCDClient } from '@terra-money/terra.js';
 
-import { IDchaine, LCDurl } from '../../../utils/appParametres';
+import { IDchaine, LCDurl } from '../../AppParametres';
 
 import PageValidatorsAfficheListe from './PageValidatorsAfficheListe';
 import ComponentEnCoursDeChargement from '../ComponentEnCoursDeChargement';

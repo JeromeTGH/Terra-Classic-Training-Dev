@@ -1,5 +1,5 @@
 import React from 'react';
-import { reseau, IDchaine, LCDurl } from '../../../utils/appParametres';
+import { reseau, IDchaine, LCDurl } from '../../AppParametres';
 
 // import { ValConsPublicKey } from '@terra-money/terra.js';
 
@@ -20,7 +20,8 @@ const PageBlockAfficheDetail = (props) => {
                 Time : <strong>{props.donnees ? props.donnees.header.time : ''}</strong><br />
                 <br />
                 Proposer Address : <strong>{props.donnees.header.proposer_address}</strong><br />
-                {/* Validator Address : <strong>{adrValidateur}</strong><br /> */}
+                Terravalcons Address : <strong>{props.terravalcons}</strong><br />
+                Validator Public Key : <strong>{props.validatorPublicKey}</strong><br />
             </div>
             <h2>Last commit</h2>
             <div>

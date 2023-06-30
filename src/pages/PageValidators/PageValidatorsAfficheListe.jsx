@@ -12,6 +12,7 @@ const PageValidatorsAfficheListe = (props) => {
                             &nbsp;{validator.description.moniker}
                             &nbsp;- {validator.commission.commission_rates.rate.d[0]/100000} %
                             &nbsp;- <Link to={"/validator/" + validator.operator_address}>{validator.operator_address}</Link>
+                            &nbsp;{validator.consensus_pubkey.key}
                         </li>
                     ) : (
                         null

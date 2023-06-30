@@ -1,5 +1,5 @@
 import React from 'react';
-import { reseau, IDchaine, LCDurl, tblCorrespondanceValeurs } from '../../../utils/appParametres';
+import { reseau, IDchaine, LCDurl, tblCorrespondanceValeurs } from '../../AppParametres';
 
 
 const PageAccountAfficheDetail = (props) => {
