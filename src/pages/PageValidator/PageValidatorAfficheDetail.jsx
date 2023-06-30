@@ -24,11 +24,7 @@ const PageValidatorAfficheDetail = (props) => {
             <div>Jailed : <strong>{props.infosvalidateur.jailed ? 'oui' : 'non'}</strong></div>
             <div>Status : <strong>{props.infosvalidateur.status}</strong></div>
             <br />
-            <h2>Remarques</h2>
-            <div><mark>
-                Problèmes rencontrés :<br />
-                - Problème de correspondance entre le "consensus_pubkey" de ces validateurs et le "proposer_address" d'un "BlockInfo" quelconque
-            </mark></div>
+            <br />
         </>
     );
 };

@@ -61,10 +61,11 @@ const PageBlock = () => {
             })
 
 
-        
+                    // eslint-disable-next-line
     }, [blockNum])
 
 
+    // Récupération du "terravalcons", une fois le "proposer_address" récupéré
     useEffect(() => {
         if(infosBlock) {
             // Pour trouver le "terravalcons" à partir de la "proposer_address"
@@ -72,16 +73,16 @@ const PageBlock = () => {
             setTerravalcons(retTerraValCons);
 
             // Et juste pour info, pour retrouver le "proposer_address" depuis le "terravalcons"
-            const retProposerAddress = Buffer.from(bech32.fromWords(bech32.decode(retTerraValCons).words)).toString('base64');
-            console.log("retProposerAddress", retProposerAddress);
+                // const retProposerAddress = Buffer.from(bech32.fromWords(bech32.decode(retTerraValCons).words)).toString('base64');
+                // console.log("retProposerAddress", retProposerAddress);
         }
     }, [infosBlock])
 
+    // Récupération de la "validataor public key", une fois son "terravalcons" récupéré + "validatorSet" chargé
     useEffect(() => {
         if(terravalcons && validatorSet) {
-            const resultat = validatorSet[0].filter(val => val.address === terravalcons);
-            setValidatorPublicKey(resultat[0].pub_key.key);
-            console.log("resultat", resultat);
+            const validateurRecupere = validatorSet[0].filter(val => val.address === terravalcons);
+            setValidatorPublicKey(validateurRecupere[0].pub_key.key);
         }
     }, [terravalcons, validatorSet])
 

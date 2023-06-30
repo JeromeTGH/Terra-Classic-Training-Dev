@@ -6,6 +6,7 @@ import PageAccount from './pages/PageAccount';
 import PageBlock from './pages/PageBlock';
 import PageValidators from './pages/PageValidators';
 import PageValidator from './pages/PageValidator';
+import PageTx from './pages/PageTx';
 import Page404 from './pages/Page404';
 
 const AppRoutes = () => {
@@ -25,6 +26,10 @@ const AppRoutes = () => {
                 <Route path="/validator">
                     <Route path="" element={<PageValidator />} />
                     <Route path=":valAdr" element={<PageValidator />} />
+                </Route>
+                <Route path="/tx">
+                    <Route path="" element={<PageTx />} />
+                    <Route path=":txHash" element={<PageTx />} />
                 </Route>
                 <Route path="/404" exact element={<Page404 />} />
                 <Route path="*" element={<Navigate replace to="/404" />} />

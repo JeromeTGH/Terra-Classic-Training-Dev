@@ -1,11 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { reseau, IDchaine, LCDurl } from '../../AppParametres';
-
-// import { ValConsPublicKey } from '@terra-money/terra.js';
+import { hashToHex } from '@terra-money/terra.js';
 
 const PageBlockAfficheDetail = (props) => {
-
-    // const adrValidateur = new ValConsPublicKey(props.donnees.header.proposer_address).address();
 
     return (
         <>
@@ -34,7 +32,7 @@ const PageBlockAfficheDetail = (props) => {
                 Nombre de transactions : <strong>{props.donnees ? props.donnees.data.txs.length : ''}</strong><br />
                 <ol>
                     {props.donnees ? props.donnees.data.txs.map((data, index) => {
-                        return <li key={index}>TX&nbsp;#{index}&nbsp;:&nbsp;{data}</li>
+                        return <li key={index}>TX&nbsp;#{index}&nbsp;:&nbsp;<Link to={"/tx/" + hashToHex(data)}>{hashToHex(data)}</Link></li>
                     }) : null}
                 </ol>
             </div>
@@ -54,9 +52,8 @@ const PageBlockAfficheDetail = (props) => {
             </div>
             <h2>Remarques</h2>
             <div><mark>
-                Problèmes rencontrés :<br />
-                - Problème de correspondance entre ce "proposer_address" avec la pubkey des validateurs, via le module Staking (validators)<br />
-                - ValidatorSet limité à 100 (voir "Pagination")
+                Problème(s) rencontré(s) :<br />
+                - ValidatorSet limité à 100 (pb de pagination ?!)
             </mark></div>
         </>
     );
