@@ -42,7 +42,7 @@ const PageBlock = () => {
                     setEtatPage('ok');
                     setInfosBlock(res.block);
 
-                    lcd.tendermint.validatorSet(blockNum, {'pagination.limit': '200', 'pagination.key': ''}).then(res => {
+                    lcd.tendermint.validatorSet(blockNum, {'pagination.limit': '9999'}).then(res => {
                         console.log("Validator Set", res);
                         setValidatorSet(res);
                     }).catch(err => {
@@ -82,7 +82,7 @@ const PageBlock = () => {
     useEffect(() => {
         if(terravalcons && validatorSet) {
             const validateurRecupere = validatorSet[0].filter(val => val.address === terravalcons);
-            setValidatorPublicKey(validateurRecupere[0].pub_key.key);
+            // setValidatorPublicKey(validateurRecupere[0].pub_key.key);
         }
     }, [terravalcons, validatorSet])
 
