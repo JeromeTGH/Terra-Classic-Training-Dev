@@ -38,9 +38,9 @@ const PageBlockAfficheDetail = (props) => {
             </div>
             <h2>Validator Set</h2>
             <div>
-                Nombre de validateurs : <strong>{props.validateurs ? props.validateurs[1].total : ''}</strong><br />
+                Nombre de validateurs : <strong>{props.validateurs ? props.validateurs.length : ''}</strong><br />
                 <ol>
-                    {props.validateurs ? props.validateurs[0].map((data, index) => {
+                    {props.validateurs ? props.validateurs.map((data, index) => {
                         return <li key={index}>
                             Adresse : {data.address}<br />
                             &nbsp;&nbsp;Proposer priotiry : {data.proposer_priority}<br />
@@ -50,11 +50,6 @@ const PageBlockAfficheDetail = (props) => {
                     }) : null}
                 </ol>
             </div>
-            <h2>Remarques</h2>
-            <div><mark>
-                Problème(s) rencontré(s) :<br />
-                - ValidatorSet limité à 100 (pb de pagination ?!)
-            </mark></div>
         </>
     );
 };

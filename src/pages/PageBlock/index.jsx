@@ -18,7 +18,7 @@ const PageBlock = () => {
     // Variables react
     const [ etatPage, setEtatPage ] = useState('vide');             // Variable d'état, pour conditionner l'affichage à l'écran
     const [ infosBlock, setInfosBlock ] = useState();               // Tableau qui contiendra les données retournées par le LCD
-    const [ validatorSet, setValidatorSet ] = useState();
+    const [ validatorSet, setValidatorSet ] = useState([]);
 
     const [ terravalcons, setTerravalcons ] = useState();
     const [ validatorPublicKey, setValidatorPublicKey ] = useState();
@@ -30,6 +30,37 @@ const PageBlock = () => {
         isClassic: true
     });
 
+    const getAllValidatorSet = async () => {
+        const allValidatorSet = [];
+        const valeurOffset = 100;
+        let offsetPagination = 0;
+        let nbreTotalDeValidateursTrouves = 0;
+        
+        
+        try {
+            // Lecture du "premier lot" de 100 validateurs, dans le ValidatorSet
+            const premiereLectureValidatorSet = await lcd.tendermint.validatorSet(blockNum);
+
+            if(premiereLectureValidatorSet) {
+                nbreTotalDeValidateursTrouves = premiereLectureValidatorSet[1].total;
+                allValidatorSet.push(...premiereLectureValidatorSet[0]);
+    
+                // Si jamais il y a d'autres validateurs à lire, on passe aux 100 suivants, etc, jusqu'à arriver à la fin
+                while(allValidatorSet.length < nbreTotalDeValidateursTrouves) {
+                    offsetPagination = offsetPagination + valeurOffset;
+                    const lectureSuivanteValidatorSet = await lcd.tendermint.validatorSet(blockNum, {'pagination.offset': offsetPagination});
+                    allValidatorSet.push(...lectureSuivanteValidatorSet[0]);
+                }
+                console.log("Validator Set", allValidatorSet);
+                setValidatorSet(allValidatorSet);
+            }             
+        } catch (error) {
+            setEtatPage(error.message);
+            console.log(error);
+        }
+
+
+    }
     
     // Récupération d'infos, au chargement du component (et mise à jour, à chaque changement de blockNum)
     useEffect(() => {
@@ -42,13 +73,7 @@ const PageBlock = () => {
                     setEtatPage('ok');
                     setInfosBlock(res.block);
 
-                    lcd.tendermint.validatorSet(blockNum, {'pagination.limit': '9999'}).then(res => {
-                        console.log("Validator Set", res);
-                        setValidatorSet(res);
-                    }).catch(err => {
-                        setEtatPage(err.message);
-                        console.log(err);
-                    })
+                    getAllValidatorSet();
 
                 }
                 else {
@@ -80,9 +105,9 @@ const PageBlock = () => {
 
     // Récupération de la "validataor public key", une fois son "terravalcons" récupéré + "validatorSet" chargé
     useEffect(() => {
-        if(terravalcons && validatorSet) {
-            const validateurRecupere = validatorSet[0].filter(val => val.address === terravalcons);
-            // setValidatorPublicKey(validateurRecupere[0].pub_key.key);
+        if(terravalcons && validatorSet.length > 0) {
+            const validateurRecupere = validatorSet.filter(val => val.address === terravalcons);
+            setValidatorPublicKey(validateurRecupere[0].pub_key.key);
         }
     }, [terravalcons, validatorSet])
 
