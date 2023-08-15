@@ -1,15 +1,10 @@
-import { useEffect } from "react";
-import { testFunction } from "./test";
+import Home from "./Home";
 
 function App() {
 
-  useEffect(() => {
-    testFunction();
-  }, [])
-
   return (
     <div>
-      Test
+      <Home />
     </div>
   );
 }

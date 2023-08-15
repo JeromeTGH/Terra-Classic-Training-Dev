@@ -13,6 +13,8 @@ export const testFunction = () => {
     fcd.account.txs(params).then(res => {
         if(res.txs) {
             console.log("res.txs", res.txs);
+
+            
         } else
             console.log("Aucun TX retourné");
 
