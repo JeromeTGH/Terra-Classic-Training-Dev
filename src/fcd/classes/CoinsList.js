@@ -1,28 +1,33 @@
 
 export class CoinsList {
 
-    constructor (associativeArray, fullArray) {
-        this.associativeArray = associativeArray;
-        this.fullArray = fullArray;
+    constructor (objetAvecVariables) {
+        this.tbl = objetAvecVariables.tbl;
     }
 
 
-    static createInstance (fullData) {
-        return new CoinsList(fullData.associativeArray, fullData.fullArray);
+    static insertInClass (objetAvecVariables) {
+        return new CoinsList(objetAvecVariables);
     }
 
 
     static createInstanceFromApiData (apiData) {
+        // ***************************************************
         // Reçoit un tableau d'objects : [ { denom, amount } ]        
-        const associativeArray = [];
-        const fullArray = [];
-        
+        // ***************************************************
+
+        // Traitement des données
+        const tblOfCoins = [];
         for (const coin of apiData) {
-            associativeArray[coin.denom] = parseInt(coin.amount);
-            fullArray.push([parseInt(coin.amount), coin.denom])
+            tblOfCoins.push([parseInt(coin.amount), coin.denom])
         }
+
+        // Mise en forme
+        const objetAvecVariables = {}
+        objetAvecVariables['tbl'] = tblOfCoins;
         
-        return new CoinsList(associativeArray, fullArray);
+        // Et renvoie de l'instance
+        return new CoinsList(objetAvecVariables);
     }
 
 }

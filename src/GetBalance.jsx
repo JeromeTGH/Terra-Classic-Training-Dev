@@ -13,12 +13,12 @@ const GetBalance = () => {
 
         const FCDurl = 'https://terra-classic-fcd.publicnode.com';
         const fcd = new FCDclient(FCDurl);
-    
-        const params = new URLSearchParams();
-        params.append('offset', 0);
 
-        fcd.bank.getBalance("terra1jgp27m8fykex4e4jtt0l7ze8q528ux2lh4zh0f", params).then(coinlist => {
-            setTblOfCoin(CoinsList.createInstance(coinlist).fullArray);
+        fcd.bank.getBalance("terra1jgp27m8fykex4e4jtt0l7ze8q528ux2lh4zh0f").then(res => {
+
+            const coinlist = CoinsList.insertInClass(res);
+            setTblOfCoin(coinlist.tbl);
+
             setMsgErreur("");
         }).catch(err => {
             console.log("error", err);
