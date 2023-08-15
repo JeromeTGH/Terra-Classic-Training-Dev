@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FCDclient } from './fcd/FCDclient';
 
-const Home = () => {
+const GetAllTxs = () => {
 
     // Variables react
     const [tblTxs, setTblTxs] = useState();
@@ -36,7 +36,8 @@ const Home = () => {
                         const msgTxtSeul = msgTxtBrut.split("/")[1];
                         msgType = msgTxtSeul.replace('Msg', '');
                     }
-                    tblTxs.push([datetime, txHash, txHeight, msgType]);
+					const errorCode = element.code ? element.code : 0;
+                    tblTxs.push([datetime, txHash, txHeight, msgType, errorCode]);
                 })
                 setTblTxs(tblTxs);
             } else
@@ -59,10 +60,10 @@ const Home = () => {
                     <table border="black" cellSpacing="0" cellPadding="6px">
                         <thead>
                             <tr>
-                                <td>DateTime</td>
-                                <td>Operation</td>
-                                <td>TxHash</td>
-                                <td>Height</td>
+                                <th>DateTime</th>
+                                <th>Operation</th>
+                                <th>TxHash</th>
+                                <th>Height</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +87,7 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default GetAllTxs;
 
 
 

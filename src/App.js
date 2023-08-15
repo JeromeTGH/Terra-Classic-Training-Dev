@@ -1,10 +1,10 @@
-import Home from "./Home";
+import GetBalance from "./GetBalance";
 
 function App() {
 
   return (
     <div>
-      <Home />
+      <GetBalance />
     </div>
   );
 }
