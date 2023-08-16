@@ -1,6 +1,5 @@
 import { APIrequester } from "./APIrequester";
 import { AccountAPI } from "./api/AccountAPI";
-import { BankAPI } from "./api/BankAPI";
 
 export class FCDclient {
 
@@ -8,7 +7,6 @@ export class FCDclient {
         this.apiRequester = new APIrequester(FCDurl);
 
         this.account = new AccountAPI(this.apiRequester);
-        this.bank = new BankAPI(this.apiRequester);
     }
 
 }

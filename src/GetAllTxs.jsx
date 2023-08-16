@@ -19,9 +19,9 @@ const GetAllTxs = () => {
 
         fcd.account.txs(params).then(res => {
             setMsgErreur("");
-            if(res.txs) {
+            if(res.data.txs) {
                 const tblTxs = [];
-                res.txs.forEach(element => {
+                res.data.txs.forEach(element => {
                     const datetime = metEnFormeDateTime(element.timestamp);
                     const txHash = element.txhash;
                     const txHeight = element.height;

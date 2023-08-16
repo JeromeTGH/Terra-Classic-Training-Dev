@@ -14,7 +14,7 @@ const GetBalance = () => {
         const FCDurl = 'https://terra-classic-fcd.publicnode.com';
         const fcd = new FCDclient(FCDurl);
 
-        fcd.bank.getBalance("terra1jgp27m8fykex4e4jtt0l7ze8q528ux2lh4zh0f").then(res => {
+        fcd.account.getBalance("terra1jgp27m8fykex4e4jtt0l7ze8q528ux2lh4zh0f").then(res => {
             const coinlist = new CoinsList(res);
             setTblOfCoin(coinlist.tbl);
             setMsgErreur("");
