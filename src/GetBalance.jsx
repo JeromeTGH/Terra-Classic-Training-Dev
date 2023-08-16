@@ -15,13 +15,11 @@ const GetBalance = () => {
         const fcd = new FCDclient(FCDurl);
 
         fcd.bank.getBalance("terra1jgp27m8fykex4e4jtt0l7ze8q528ux2lh4zh0f").then(res => {
-
-            const coinlist = CoinsList.insertInClass(res);
+            const coinlist = new CoinsList(res);
             setTblOfCoin(coinlist.tbl);
-
             setMsgErreur("");
         }).catch(err => {
-            console.log("error", err);
+            console.log("err.response.data", err.response.data);
             setMsgErreur("ERROR : failed to fetch [balance] ...");
         })
 

@@ -6,26 +6,20 @@ export class CoinsList {
     }
 
 
-    static insertInClass (objetAvecVariables) {
-        return new CoinsList(objetAvecVariables);
-    }
+    static createInstanceFromApiData (rawApiData) {
 
+        // Initialisation du tableau général, à l'image de la classe
+        const objetAvecVariables = {};
 
-    static createInstanceFromApiData (apiData) {
-        // ***************************************************
-        // Reçoit un tableau d'objects : [ { denom, amount } ]        
-        // ***************************************************
+        // Champs
+        objetAvecVariables['tbl'] = [];
 
-        // Traitement des données
-        const tblOfCoins = [];
-        for (const coin of apiData) {
-            tblOfCoins.push([parseInt(coin.amount), coin.denom])
-        }
+        // Récupération des données
+        const reponseResult = rawApiData.data.result;
+        for (const coin of reponseResult) {
+            objetAvecVariables['tbl'].push([parseInt(coin.amount), coin.denom])
+        }      
 
-        // Mise en forme
-        const objetAvecVariables = {}
-        objetAvecVariables['tbl'] = tblOfCoins;
-        
         // Et renvoie de l'instance
         return new CoinsList(objetAvecVariables);
     }
