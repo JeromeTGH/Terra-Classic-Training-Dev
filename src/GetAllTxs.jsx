@@ -18,6 +18,14 @@ const GetAllTxs = () => {
         params.append('account', 'terra1sk06e3dyexuq4shw77y3dsv480xv42mq73anxu');
 
         fcd.account.txs(params).then(res => {
+
+
+
+            // CODE À RETRAVAILLER (passer dans une classe, pour le traitement de la réponse)
+
+
+
+
             setMsgErreur("");
             if(res.data.txs) {
                 const tblTxs = [];

@@ -1,4 +1,3 @@
-import { CoinsList } from "../classes/CoinsList";
 
 export class AccountAPI {
 
@@ -8,8 +7,8 @@ export class AccountAPI {
     }
 
     // Exemple d'appel : /bank/balances/terra12gw6wuav6cyezly29t66tpnty5q2ny3d2r88gd
-    async getBalance(accountAdr, params = new URLSearchParams()) {
-        return await this.apiRequester.get('/bank/balances/' + accountAdr, params).then(res => CoinsList.createInstanceFromApiData(res));
+    async askForBalance(accountAdr, params = new URLSearchParams()) {
+        return await this.apiRequester.get('/bank/balances/' + accountAdr, params);
     }
 
     // Exemple d'appel : /v1/txs?offset=0&limit=100&account=terra1sk06e3dyexuq4shw77y3dsv480xv42mq73anxu
@@ -17,6 +16,5 @@ export class AccountAPI {
         params.append('limit', 100);
         return this.apiRequester.get('/v1/txs', params);
     }
-
 
 }

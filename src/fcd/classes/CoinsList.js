@@ -6,12 +6,12 @@ export class CoinsList {
     }
 
 
-    static createInstanceFromApiData (rawApiData) {
+    static extractFromBalance (rawApiData) {
 
         // Initialisation du tableau général, à l'image de la classe
         const objetAvecVariables = {};
 
-        // Champs
+        // Champs à insérer dedans
         objetAvecVariables['tbl'] = [];
 
         // Récupération des données

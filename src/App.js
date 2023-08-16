@@ -1,12 +1,10 @@
-import GetAllTxs from "./GetAllTxs";
-// import GetBalance from "./GetBalance";
+import TestTendermint from "./TestTendermint";
 
 function App() {
 
   return (
     <div>
-      {/* <GetBalance /> */}
-      <GetAllTxs />
+      <TestTendermint />
     </div>
   );
 }
