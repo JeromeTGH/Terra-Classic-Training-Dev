@@ -1,3 +1,4 @@
+import { Tx } from "./Tx";
 
 export class BlockInfo {
 
@@ -12,29 +13,14 @@ export class BlockInfo {
             operatorAddress: objetAvecVariables.proposer.operatorAddress
         }
         this.txs = [];
-
+        for (const tx of objetAvecVariables.txs) {
+            this.txs.push(Tx.extractFromTxs(tx));
+        } 
     }
 
 
     static extractFromTendermintBlockInfo (rawApiData) {
-
-        // Initialisation du tableau général, à l'image de la classe
-        const objetAvecVariables = {
-            chainId: rawApiData.data.chainId,
-            height: rawApiData.data.height,
-            timestamp: rawApiData.data.timestamp,
-            proposer: {
-                moniker: rawApiData.data.proposer.moniker,
-                identity: rawApiData.data.proposer.identity,
-                operatorAddress: rawApiData.data.proposer.operatorAddress
-            },
-            txs: []
-            // et rawApiData.data.txs comme array of tx (id, tx, log, height, txhash, raw_log, gas_used, timestamp, et gas_wanted)
-        }
-
-
-        // Et renvoie de l'instance
-        return new BlockInfo(objetAvecVariables);
+        return new BlockInfo(rawApiData.data);
     }
 
 }

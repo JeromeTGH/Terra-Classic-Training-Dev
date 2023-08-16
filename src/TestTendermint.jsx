@@ -22,15 +22,21 @@ const TestTendermint = () => {
         //     console.log("err.response.data", err.response.data);
         // })
 
+
         // =============================
         // Get "block info", for example
         // =============================
         fcd.tendermint.askForBlockInfo(14133283).then(res => {
+            // console.log("res", res);
+
+            // const blockInfo = BlockInfo.extractFromTendermintBlockInfo(res);
+            // console.log(blockInfo.proposer.moniker);
+            // console.log(blockInfo.proposer.operatorAddress);
+
             const blockInfo = BlockInfo.extractFromTendermintBlockInfo(res);
-            console.log(blockInfo.proposer.moniker);
-            console.log(blockInfo.proposer.operatorAddress);
+            console.log(blockInfo.txs);
         }).catch(err => {
-            console.log("err.response.data", err.response.data);
+            console.log("err.response.data", err);
         })
 
 
