@@ -1,10 +1,10 @@
-import TestTendermint from "./TestTendermint";
+import GetValidator from "./GetValidator";
 
 function App() {
 
   return (
     <div>
-      <TestTendermint />
+      <GetValidator />
     </div>
   );
 }

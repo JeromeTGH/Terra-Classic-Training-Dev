@@ -19,7 +19,10 @@ const GetBalance = () => {
             setTblOfCoin(coinlist.tbl);
             setMsgErreur("");
         }).catch(err => {
-            console.log("err.response.data", err.response.data);
+            if(err.response && err.response.data)
+                console.log("err.response.data", err.response.data);
+            else
+                console.log(err);
             setMsgErreur("ERROR : failed to fetch [balance] ...");
         })
 

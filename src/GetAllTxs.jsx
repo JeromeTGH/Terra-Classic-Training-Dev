@@ -52,7 +52,10 @@ const GetAllTxs = () => {
                 console.log("Aucun TX retourné");
     
         }).catch(err => {
-            console.log("error", err);
+            if(err.response && err.response.data)
+                console.log("err.response.data", err.response.data);
+            else
+                console.log(err);
             setMsgErreur("ERROR : failed to fetch [txs] ...");
         })
 

@@ -19,24 +19,30 @@ const TestTendermint = () => {
         //     console.log("cosmos_sdk_version", nodeinfo.application_version.cosmos_sdk_version);
         //     // Résultat = "cosmos_sdk_version    v0.45.14", au moment des essais
         // }).catch(err => {
-        //     console.log("err.response.data", err.response.data);
+        //     if(err.response && err.response.data)
+        //         console.log("err.response.data", err.response.data);
+        //     else
+        //         console.log(err);
         // })
 
 
         // =============================
         // Get "block info", for example
         // =============================
-        fcd.tendermint.askForBlockInfo(14133283).then(res => {
+        fcd.tendermint.askForBlockInfo(14142387).then(res => {
             // console.log("res", res);
 
-            // const blockInfo = BlockInfo.extractFromTendermintBlockInfo(res);
-            // console.log(blockInfo.proposer.moniker);
-            // console.log(blockInfo.proposer.operatorAddress);
-
             const blockInfo = BlockInfo.extractFromTendermintBlockInfo(res);
-            console.log(blockInfo.txs);
+            console.log("height", blockInfo.height);
+            console.log("nb_tx", blockInfo.txs.length);
+            console.log("moniker", blockInfo.proposer.moniker);
+            console.log("val_adr", blockInfo.proposer.operatorAddress);
+            console.log("date_time", blockInfo.timestamp);
         }).catch(err => {
-            console.log("err.response.data", err);
+            if(err.response && err.response.data)
+                console.log("err.response.data", err.response.data);
+            else
+                console.log(err);
         })
 
 

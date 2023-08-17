@@ -8,9 +8,16 @@ export class Tx {
         this.height = objetAvecVariables.height;
         this.id = objetAvecVariables.id;
         // Logs[]
-        this.raw_log = objetAvecVariables.raw_log;
+        // raw_log
         this.timestamp = objetAvecVariables.timestamp;
-        // Tx
+        this.tx = {
+            value: {
+                fee: {
+                    amount: objetAvecVariables.tx.value.fee.amount      // objetAvecVariables.tx.value.fee.amount  =  array of {amount: '212865', denom: 'uusd'}, for example
+                },
+                msg:  objetAvecVariables.tx.value.msg     // objetAvecVariables.tx.value.msg  =  [i].type = "bank/MsgSend", "staking/MsgDelegate", ...
+            }
+        }
         this.txhash = objetAvecVariables.txhash;
 
     }
