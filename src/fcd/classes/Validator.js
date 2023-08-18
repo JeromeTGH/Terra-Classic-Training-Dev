@@ -1,3 +1,4 @@
+import { bech32 } from 'bech32';
 
 export class Validator {
 
@@ -29,6 +30,10 @@ export class Validator {
         // this.tokens = objetAvecVariables.tokens;                         // Nota : doublon avec "delegator_shares" ?
         // this.unbonding_height = objetAvecVariables.unbonding_height;
         // this.unbonding_time = objetAvecVariables.unbonding_time;
+
+
+        // AJOUT : adresse "terra1..." associée au compte validateur "terravaloper1..."
+        this.accAddress = bech32.encode('terra', bech32.decode(objetAvecVariables.operator_address).words);
 
     }
 
