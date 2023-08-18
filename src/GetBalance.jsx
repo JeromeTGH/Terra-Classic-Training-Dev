@@ -11,8 +11,7 @@ const GetBalance = () => {
     // Exécution au démarrage
     useEffect(() => {
 
-        const FCDurl = 'https://terra-classic-fcd.publicnode.com';
-        const fcd = new FCDclient(FCDurl);
+        const fcd = FCDclient.getSingleton();
 
         fcd.account.askForBalance("terra1jgp27m8fykex4e4jtt0l7ze8q528ux2lh4zh0f").then(res => {
             const coinlist = CoinsList.extractFromBalance(res);

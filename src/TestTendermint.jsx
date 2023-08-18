@@ -8,8 +8,7 @@ const TestTendermint = () => {
     // Exécution au démarrage
     useEffect(() => {
 
-        const FCDurl = 'https://terra-classic-fcd.publicnode.com';
-        const fcd = new FCDclient(FCDurl);
+        const fcd = FCDclient.getSingleton();
 
         // // =====================================
         // // Get "cosmos sdk version", for example

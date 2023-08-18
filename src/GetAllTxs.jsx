@@ -10,8 +10,7 @@ const GetAllTxs = () => {
     // Exécution au démarrage
     useEffect(() => {
 
-        const FCDurl = 'https://terra-classic-fcd.publicnode.com';
-        const fcd = new FCDclient(FCDurl);
+        const fcd = FCDclient.getSingleton();
     
         const params = new URLSearchParams();
         params.append('offset', 0);
