@@ -2,18 +2,19 @@
 export class StakingAPI {
 
     // Constructeur
-    constructor (apiRqt) {
+    constructor (apiRqt, paths) {
         this.apiRequester = apiRqt;
+        this.paths = paths;
     }
 
-    // Exemple d'appel : /staking/validators/terravaloper120ppepaj2lh5vreadx42wnjjznh55vvktp78wk
-    async askForValidatorInfo(valoperAdr, params = new URLSearchParams()) {
-        return this.apiRequester.get('/staking/validators/' + valoperAdr, params);
+    // Exemple d'appel : /v1/staking/validators/terravaloper120ppepaj2lh5vreadx42wnjjznh55vvktp78wk
+    async getValidatorInfos(valoperAdr, params = new URLSearchParams()) {
+        return this.apiRequester.get(this.paths.getValidatorInfos + valoperAdr, params);
     }
 
-    // Exemple d'appel : /staking/validators/
-    async askForValidatorsList(params = new URLSearchParams()) {
-        return this.apiRequester.get('/staking/validators', params);
+    // Exemple d'appel : /v1/staking/validators
+    async getValidatorsList(params = new URLSearchParams()) {
+        return this.apiRequester.get(this.paths.getValidatorsList, params);
     }
 
 
