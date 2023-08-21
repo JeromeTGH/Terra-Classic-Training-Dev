@@ -1,10 +1,10 @@
-import GetValidator from "./GetValidator";
+import BurnWatcher from "./BurnWatcher/BurnWatcher";
 
 function App() {
 
   return (
-    <div>
-      <GetValidator />
+    <div style={{ fontFamily: 'sans-serif' }}>
+      <BurnWatcher />
     </div>
   );
 }
