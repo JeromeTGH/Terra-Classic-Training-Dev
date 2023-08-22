@@ -1,10 +1,10 @@
-import BurnWatcher from "./BurnWatcher/BurnWatcher";
+import TestMiseEnPage from "./TestMiseEnPage/TestMiseEnPage";
 
 function App() {
 
   return (
     <div style={{ fontFamily: 'sans-serif' }}>
-      <BurnWatcher />
+      <TestMiseEnPage />
     </div>
   );
 }
