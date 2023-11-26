@@ -2,44 +2,42 @@ import React, { useEffect, useState } from 'react';
 
 const TerraStationWallet = () => {
 
-    const [etatTerraStationExtension, setEtatTerraStationExtension] = useState(false);
+    const [isStationExtensionAvailable, setIsStationExtensionAvailable] = useState(false);
+    const [isTerraExtensionAvailable, setIsTerraExtensionAvailable] = useState(false);
     const [terraWallets, setTerraWallets] = useState([]);
-
+    const [interchainWallets, setInterchainWallets] = useState([]);
 
     useEffect(() => {
 
         // console.log("window", window);
 
-        // console.log("window.isStationExtensionAvailable", window.isStationExtensionAvailable);
-        // console.log("window.isTerraExtensionAvailable", window.isTerraExtensionAvailable);
-        // console.log("window.interchainWallets", window.interchainWallets);
-        // console.log("window.station", window.station);
-        // console.log("window.terraWallets", window.terraWallets);
+        window.addEventListener('load', () => {
+            checkTerraStationExtension();
+         }, false);
 
-        checkTerraStationExtension();
+        
         // eslint-disable-next-line
     }, [])
 
 
     const checkTerraStationExtension = () => {
         console.log("checkTerraStationExtension");
-        console.log("window.terraWallets", window.terraWallets);
-        if(window.isStationExtensionAvailable && window.isTerraExtensionAvailable) {
-            setEtatTerraStationExtension(true);
-            setTerraWallets(window.terraWallets);
-        } else {
-            setEtatTerraStationExtension(false);
-            setTerraWallets([])
-        }
 
-        setTimeout(() => {
-            checkTerraStationExtension();
-        }, 2000);
+        // console.log("window.isStationExtensionAvailable", window.isStationExtensionAvailable);
+        // console.log("window.isTerraExtensionAvailable", window.isTerraExtensionAvailable);
+        // console.log("window.interchainWallets", window.interchainWallets);
+        // console.log("window.terraWallets", window.terraWallets);
+
+        setIsStationExtensionAvailable(window.isStationExtensionAvailable);
+        setIsTerraExtensionAvailable(window.isTerraExtensionAvailable);
+        setTerraWallets(window.terraWallets);
+        setInterchainWallets(window.interchainWallets);
     }
 
     return (
         <div>
-            <div>Etat "Terra Station Extension" = <strong>{etatTerraStationExtension ? "actif" : "absent ou désactivé"}</strong></div>
+            <div>isStationExtensionAvailable = <strong>{isStationExtensionAvailable ? "true !" : "false..."}</strong></div>
+            <div>isTerraExtensionAvailable = <strong>{isTerraExtensionAvailable ? "true !" : "false..."}</strong></div>
             <br />
             <div>terraWallets =<br />{terraWallets ? terraWallets.map((terraWallet, idx) => {
                 return <ul key={idx}>
@@ -48,7 +46,16 @@ const TerraStationWallet = () => {
                     <li>terraWallet.icon = <strong>{terraWallet.icon ? terraWallet.icon : "(vide)"}</strong></li>
                     <li>terraWallet.connector = <strong>{terraWallet.connector ? terraWallet.connector : "(vide)"}</strong></li>
                 </ul>
-            }) : "-"}
+                }) : "-"}
+            </div>
+            <div>interchainWallets =<br />{interchainWallets ? interchainWallets.map((interchainWallet, idx) => {
+                return <ul key={idx}>
+                    <li>interchainWallet.name = <strong>{interchainWallet.name ? interchainWallet.name : "(vide)"}</strong></li>
+                    <li>interchainWallet.identifier = <strong>{interchainWallet.identifier ? interchainWallet.identifier : "(vide)"}</strong></li>
+                    <li>interchainWallet.icon = <strong>{interchainWallet.icon ? interchainWallet.icon : "(vide)"}</strong></li>
+                    <li>interchainWallet.connector = <strong>{interchainWallet.connector ? interchainWallet.connector : "(vide)"}</strong></li>
+                </ul>
+                }) : "-"}
             </div>
         </div>
     );
