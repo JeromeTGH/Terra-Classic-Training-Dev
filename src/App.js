@@ -1,10 +1,10 @@
-import TestMiseEnPage from "./TestMiseEnPage/TestMiseEnPage";
+import TerraStationWallet from "./TerraStationWallet/TerraStationWallet";
 
 function App() {
 
   return (
     <div style={{ fontFamily: 'sans-serif' }}>
-      <TestMiseEnPage />
+      <TerraStationWallet />
     </div>
   );
 }
