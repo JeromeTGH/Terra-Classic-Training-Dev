@@ -9,9 +9,9 @@ const TerraStationWallet = () => {
 
     useEffect(() => {
 
-        // console.log("window", window);
-
+        
         window.addEventListener('load', () => {
+            // console.log("window", window);
             checkTerraStationExtension();
          }, false);
 
@@ -21,7 +21,7 @@ const TerraStationWallet = () => {
 
 
     const checkTerraStationExtension = () => {
-        console.log("checkTerraStationExtension");
+        // console.log("checkTerraStationExtension");
 
         // console.log("window.isStationExtensionAvailable", window.isStationExtensionAvailable);
         // console.log("window.isTerraExtensionAvailable", window.isTerraExtensionAvailable);
@@ -32,6 +32,10 @@ const TerraStationWallet = () => {
         setIsTerraExtensionAvailable(window.isTerraExtensionAvailable);
         setTerraWallets(window.terraWallets);
         setInterchainWallets(window.interchainWallets);
+
+        // window.crypto > subtle > decrypt, deriveBits, deriveKey, digest, encrypt, exportKey, generateKey, importKey, sign, unwrapKey, verify, wrapKey
+
+
     }
 
     return (
