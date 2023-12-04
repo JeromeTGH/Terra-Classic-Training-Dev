@@ -7,19 +7,27 @@ const TerraStationWallet = () => {
     const [terraWallets, setTerraWallets] = useState([]);
     const [interchainWallets, setInterchainWallets] = useState([]);
 
+
     useEffect(() => {
 
-        
-        window.addEventListener('load', () => {
-            // console.log("window", window);
-            checkTerraStationExtension();
-         }, false);
+        window.addEventListener("message", receiveMessage, false);
+
+        function receiveMessage(event) {
+            console.log("Event =", event);
+        }
+
+
+        // window.addEventListener('load', () => {
+        //     // console.log("window", window);
+        //     checkTerraStationExtension();
+        //  }, false);
 
         
         // eslint-disable-next-line
     }, [])
 
 
+    // eslint-disable-next-line
     const checkTerraStationExtension = () => {
         // console.log("checkTerraStationExtension");
 
@@ -35,7 +43,17 @@ const TerraStationWallet = () => {
 
         // window.crypto > subtle > decrypt, deriveBits, deriveKey, digest, encrypt, exportKey, generateKey, importKey, sign, unwrapKey, verify, wrapKey
 
+    }
 
+    const handleClick = () => {
+        
+        const sendMsg = {
+            Date.now(),
+            "connect"
+        }
+
+        window.postMessage("connect", "*");
+        console.log("test");
     }
 
     return (
@@ -61,6 +79,8 @@ const TerraStationWallet = () => {
                 </ul>
                 }) : "-"}
             </div>
+
+            <button onClick={() => handleClick()}>Bouton</button>
         </div>
     );
 };

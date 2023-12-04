@@ -1,10 +1,10 @@
-import TerraStationWallet from "./TerraStationWallet/TerraStationWallet";
+import Extension from "./Extension/Extension.jsx";
 
 function App() {
 
   return (
     <div style={{ fontFamily: 'sans-serif' }}>
-      <TerraStationWallet />
+      <Extension />
     </div>
   );
 }
