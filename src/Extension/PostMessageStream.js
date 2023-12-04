@@ -62,16 +62,17 @@ export default class PostMessageStream {
             }
             // this.uncork();
           }
-        } else {
-          // forward message
-          try {
-            // this.push(msg.data);
-            console.log("push");
-          } catch (err) {
-            console.warn(err);
-            // this.emit('error', err);
-          }
         }
+        //  else {
+        //   // forward message
+        //   try {
+        //     // this.push(msg.data);
+        //     console.log("push");
+        //   } catch (err) {
+        //     console.warn(err);
+        //     // this.emit('error', err);
+        //   }
+        // }
     }
 
     write(data, _encoding, cb) {
