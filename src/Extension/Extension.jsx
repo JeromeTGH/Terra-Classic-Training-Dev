@@ -39,7 +39,7 @@ const Extension = () => {
 
 
     const checkTerraStationExtension = () => {
-        console.log("window", window);
+        // console.log("window", window);
 
         // console.log("window.isStationExtensionAvailable", window.isStationExtensionAvailable);
         // console.log("window.isTerraExtensionAvailable", window.isTerraExtensionAvailable);
